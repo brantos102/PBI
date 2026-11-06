@@ -1,4 +1,4 @@
-# Compras Ecuador — entrega y conexión (revisión 2)
+# Compras Ecuador — entrega y conexión (revisión 3)
 
 ## Contenido y estado
 - `Compras.pbip`: proyecto editable de Power BI con siete pestañas, modelo semántico, medidas DAX y consultas Power Query.
@@ -28,7 +28,7 @@ Conservar dos pestañas con estos nombres y encabezados en fila 1:
 - `BASE KPIS`: Fecha | Pais | Etiquetas de fila | Suma de importe | TIPO SERVICIO | FACTURAS | Quito | Guayaquil | F PAGO | Ciudad
 - `AHORROS`: FECHA | CATEGORIA | COTI 1 | COTI 2 | DIFERENCIA
 
-Mantener tipos numéricos reales en importes y cotizaciones y fechas reales (o ISO yyyy-MM-dd). No almacenar cifras como textos con `$` o separadores de miles. Las consultas detienen la actualización si encuentran importes textuales para evitar interpretaciones ambiguas. DIFERENCIA puede ser numérica; se admite `$ -` solo cuando ambas cotizaciones son cero. Conservar las filas sin totalizar dentro del detalle; las filas sin fecha y sin descripción de BASE KPIS se excluyen como vacías/subtotales. No borrar errores ni sustituirlos por cero para forzar la actualización.
+Mantener tipos numéricos reales en importes y cotizaciones y fechas reales (o ISO yyyy-MM-dd). Se recomiendan celdas numéricas reales. La revisión 3 también admite números como texto con formatos explícitos `1,234.56` y `1.234,56`, signos y prefijos/sufijos USD o $. Las celdas vacías, espacios o guiones en las columnas opcionales se conservan como null. Un único separador seguido de tres dígitos, como `1,234`, es ambiguo: usar una celda numérica real o escribir dos decimales. Los errores indican hoja, fila y columna. DIFERENCIA puede ser numérica o texto numérico; un valor ausente/guion se interpreta como cero únicamente cuando ambas cotizaciones son cero. Con cotizaciones distintas de cero se exige un importe declarado. Conservar las filas sin totalizar dentro del detalle; las filas sin fecha y sin descripción de BASE KPIS se excluyen como vacías/subtotales. No borrar errores ni sustituirlos por cero para forzar la actualización.
 
 Agregar cada mes debajo del anterior, sin sobrescribir agosto, si se quiere construir una tendencia. Los encabezados y tipos deben mantenerse. No pegar el total general como transacción. Se recomienda añadir posteriormente ID de documento, ID de línea, ID de proveedor, RUC, moneda, fecha real de documento y plazo de pago; esas columnas requerirán ampliar el modelo. FilaOrigen es trazabilidad de ubicación en cada actualización, no una clave estable entre versiones.
 
@@ -72,7 +72,13 @@ Se conserva la estructura analítica y paleta azul de la presentación, adaptada
 - No se incorporó histórico enero–julio de compras como transacciones: falta el detalle fuente. Esos meses deben aparecer sin dato, no como cero de gasto.
 
 
-## Corrección de importes (revisión 2)
+## Corrección de importes (revisión 3)
 Las medidas financieras numéricas conservan sus valores y tipo decimal fijo. Las tarjetas monetarias utilizan medidas auxiliares de presentación con FORMAT(..., "#,##0.00", "en-US") para mostrar **356,179.86** sin abreviaturas de miles/millones. Estas medidas de texto son solo para tarjetas: los gráficos y cálculos conservan las medidas numéricas originales. Se fijaron las unidades de visualización en Ninguno y la precisión monetaria en dos decimales. Las tarjetas indican USD en el título. Las cifras no se dividieron por 1.000 ni se recalcularon.
 
 Para corregir un informe existente manualmente: seleccionar tarjeta > Formato visual > Etiqueta de datos/Valor destacado > Unidades de visualización = Ninguno, Decimales = 2. En gráficos revisar también ejes y etiquetas de datos. La posición exacta varía entre tarjetas clásicas y nuevas.
+
+
+## Revisión 3 — vacíos e importes de Google
+La función `LeerNumero` admite números nativos, importes de texto con separadores comprobables y celdas opcionales vacías. Compras y Ahorros usan la misma conversión; FACTURAS debe seguir siendo entero y puede estar vacío. Importe/COTI 1/COTI 2 son obligatorios para filas de detalle. Los errores no se reemplazan por cero. Las filas vacías enviadas por Google como cadenas vacías se excluyen junto con los subtotales que carecen de fecha y descripción.
+
+Para conservar tu diseño existente, consulta `SOLUCION_GUAYAQUIL.md`: se pueden reemplazar únicamente tres consultas en Power Query. Antes de abrir un nuevo proyecto, anota tu URL de hoja nativa: el ZIP no contiene las credenciales ni la URL nueva de tu conexión local.

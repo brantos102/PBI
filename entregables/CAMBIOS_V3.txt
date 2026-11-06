@@ -1,0 +1,8 @@
+Revision 3
+Funcion LeerNumero: conversion de importes de texto, vacios, simbolos y signos.
+Compras/Ahorros: llamadas con hoja, fila y columna para localizar errores.
+FACTURAS vacio conservado; se rechazan fracciones.
+Filas completamente vacias como texto excluidas.
+Sin cambios en los datos de respaldo ni medidas financieras.
+Conserva presentacion monetaria exacta de revision 2.
+10 consultas con sintaxis validada; motor M y Google pendientes de ejecucion en Desktop.

@@ -2,7 +2,11 @@
 
 Informe de compras, servicios y ahorros basado en el Excel y la presentación compartidos.
 
-## Revisión 2: importes completos y conexión Google
+## Revisión 3: importes de texto y celdas vacías de Google
+
+Corregido el rechazo de valores de texto en Guayaquil y otras columnas numéricas. Se admiten vacíos e importes como `1,234.56` o `1.234,56`. Los errores ambiguos indican hoja, fila y columna. [Solución del error Guayaquil y actualización del PBIX existente](entregables/SOLUCION_GUAYAQUIL.md).
+
+### Formato exacto y conexión Google
 
 Las tarjetas monetarias muestran los importes completos con dos decimales, por ejemplo **USD 356,179.86**, sin abreviarlos en miles. El error “The document must not be an Office file” exige convertir el XLSX de Drive a una hoja nativa y usar su **URL nueva**.
 
@@ -10,7 +14,7 @@ Consulta [la solución paso a paso](entregables/SOLUCION_ERRORES.md). La conexi�
 
 ## Descargar
 
-- [Paquete corregido Power BI — revisión 2 (ZIP)](https://github.com/brantos102/PBI/raw/refs/heads/main/entregables/Compras_Ecuador_PowerBI_v2.zip)
+- [Paquete corregido Power BI — revisión 3 (ZIP)](https://github.com/brantos102/PBI/raw/refs/heads/main/entregables/Compras_Ecuador_PowerBI_v3.zip)
 - [Informe ejecutivo (PDF)](https://github.com/brantos102/PBI/raw/refs/heads/main/entregables/Resumen_ejecutivo.pdf)
 - [Libro de auditoría (Excel)](https://github.com/brantos102/PBI/raw/refs/heads/main/entregables/Auditoria.xlsx)
 - [Guía para abrir el proyecto y conectar Google Sheets](entregables/LEEME_CONEXION.md)
