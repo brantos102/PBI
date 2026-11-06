@@ -1,0 +1,9 @@
+Revision 2
+Tarjetas configuradas sin escala: 25
+Tarjetas monetarias con presentacion exacta: 13
+Graficos con unidades explicitas: 5
+Medidas auxiliares: 17
+Medidas financieras numericas y datos de origen conservados.
+URL Google vacia hasta disponer de hoja nativa convertida.
+Error Office documentado y mensaje M orientado a conversion.
+Pendiente validar renderizado/M/DAX/Google en Power BI Desktop.

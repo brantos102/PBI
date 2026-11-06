@@ -1,4 +1,4 @@
-# Compras Ecuador — entrega y conexión
+# Compras Ecuador — entrega y conexión (revisión 2)
 
 ## Contenido y estado
 - `Compras.pbip`: proyecto editable de Power BI con siete pestañas, modelo semántico, medidas DAX y consultas Power Query.
@@ -22,7 +22,7 @@ Se entrega un proyecto PBIP, no un PBIX compilado. Se validaron los JSON del inf
 Si Desktop no acepta el formato, actualizarlo primero. Como recuperación, se incluyen todas las consultas y medidas: crear parámetros y la función LeerHoja primero; después Compras, Ahorros, DistribucionCiudad y Calendario. Crear relaciones Calendario[Fecha] (1) a cada tabla de hechos (*) con dirección única. Importar las medidas y reconstruir los visuales conforme a las páginas documentadas. Esta alternativa es manual y no equivale a haber validado el proyecto en Desktop.
 
 ## 2. Preparar Google Sheets
-El enlace recibido incluye `rtpof=true`, habitual al abrir un XLSX en Drive; no se pudo verificar su tipo ni contenido por bloqueo de red. Abrirlo en el navegador con la cuenta autorizada. Si continúa siendo Excel, usar Archivo > Guardar como Hojas de cálculo de Google. Esa conversión puede generar un ID/URL nuevo: copiar la URL nueva y conservar el Excel original como respaldo. No es necesario publicar los datos en la web ni hacerlos públicos.
+El enlace recibido incluye `rtpof=true`, habitual al abrir un XLSX en Drive; su contenido remoto no se pudo leer desde este entorno por bloqueo de red. Abrirlo en el navegador con la cuenta autorizada. La captura de error recibida confirma que el conector reconoce el documento original como archivo Office. Usar Archivo > Guardar como Hojas de cálculo de Google. Esa conversión puede generar un ID/URL nuevo: copiar la URL nueva y conservar el Excel original como respaldo. No es necesario publicar los datos en la web ni hacerlos públicos.
 
 Conservar dos pestañas con estos nombres y encabezados en fila 1:
 - `BASE KPIS`: Fecha | Pais | Etiquetas de fila | Suma de importe | TIPO SERVICIO | FACTURAS | Quito | Guayaquil | F PAGO | Ciudad
@@ -34,7 +34,7 @@ Agregar cada mes debajo del anterior, sin sobrescribir agosto, si se quiere cons
 
 ## 3. Conectar de forma autenticada en Power BI
 1. Inicio > Transformar datos > Administrar parámetros.
-2. Cambiar `pGoogleSheetsURL` por la URL de la hoja nativa final, sin enlaces de descarga CSV. La URL original está precargada como referencia.
+2. Cambiar `pGoogleSheetsURL` por la URL de la hoja nativa final, sin enlaces de descarga CSV. El parámetro está vacío deliberadamente: el enlace original corresponde a un archivo Office y no funciona con el conector Google Sheets. Debe pegar la URL NUEVA creada al convertir a hoja nativa.
 3. Cambiar `pOrigen` de `Snapshot` a `GoogleSheets`.
 4. Cuando se soliciten credenciales, iniciar sesión en la cuenta Google que tenga permiso de lectura. El código usa el conector nativo `GoogleSheets.Contents`; no usa publicación pública ni tokens incrustados.
 5. Si no aparece el diálogo o se necesita reconocer el origen: Inicio > Obtener datos > Más > Google Sheets, pegar la misma URL y autenticar. Revisar que el navegador muestra BASE KPIS y AHORROS; cancelar la carga adicional para no duplicar tablas. Volver a actualizar las consultas del proyecto.
@@ -70,3 +70,9 @@ Se conserva la estructura analítica y paleta azul de la presentación, adaptada
 - Crédito USD 349.688,26 (98,18% del importe); contado USD 6.491,60 (1,82%). Por registros: 342/359 a crédito (95,26%) y 17/359 al contado (4,74%). No son porcentajes de proveedores ni días de crédito.
 - No hay importes de IVA separados: no se afirma que sean netos o brutos. USD se asume por Ecuador y la presentación; confirmar si el alcance incorpora otras monedas.
 - No se incorporó histórico enero–julio de compras como transacciones: falta el detalle fuente. Esos meses deben aparecer sin dato, no como cero de gasto.
+
+
+## Corrección de importes (revisión 2)
+Las medidas financieras numéricas conservan sus valores y tipo decimal fijo. Las tarjetas monetarias utilizan medidas auxiliares de presentación con FORMAT(..., "#,##0.00", "en-US") para mostrar **356,179.86** sin abreviaturas de miles/millones. Estas medidas de texto son solo para tarjetas: los gráficos y cálculos conservan las medidas numéricas originales. Se fijaron las unidades de visualización en Ninguno y la precisión monetaria en dos decimales. Las tarjetas indican USD en el título. Las cifras no se dividieron por 1.000 ni se recalcularon.
+
+Para corregir un informe existente manualmente: seleccionar tarjeta > Formato visual > Etiqueta de datos/Valor destacado > Unidades de visualización = Ninguno, Decimales = 2. En gráficos revisar también ejes y etiquetas de datos. La posición exacta varía entre tarjetas clásicas y nuevas.
