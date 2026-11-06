@@ -1,0 +1,5 @@
+{
+  "consultasConSintaxisCorrecta": 8,
+  "errores": [],
+  "alcance": "Analisis sintactico con @microsoft/powerquery-parser. No ejecuta el motor M, DAX ni las conexiones web."
+}

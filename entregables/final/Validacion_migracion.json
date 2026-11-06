@@ -1,0 +1,36 @@
+{
+  "base_visual": "COMPRAS_TRABAJADO.pbit",
+  "fuente_conexiones": "COMPRAS_FINAL_CONEXIONES.pbit",
+  "paginas_conservadas": [
+    "Consolidado",
+    "Guayaquil",
+    "Quito",
+    "Ahorros",
+    "Condiciones"
+  ],
+  "archivos_report_identicos": 42,
+  "visuales": 33,
+  "tablas_conservadas": 6,
+  "medidas_conservadas": 50,
+  "relaciones_conservadas": 4,
+  "referencias_campos_verificadas": 47,
+  "conexiones_web_migradas": 2,
+  "mapeo": {
+    "Consulta (conexiones)": "Compras (trabajado)",
+    "Compras (conexiones)": "Ahorros (trabajado)"
+  },
+  "sha256_entradas": {
+    "COMPRAS_TRABAJADO.pbit": "8473bc2c1020e4be9d6de7d2a8cec1c874306e2c279073ee902984118fabf70f",
+    "COMPRAS_FINAL_CONEXIONES.pbit": "1c8ce3b346303d5148f052c1d44d91cfc656586a21dd836564e978b0942dc98e"
+  },
+  "sha256_salida": "40714e01043c26d8f2a0b05cc9a70e0762c695965af49f8f42021b5be9569280",
+  "comprobacion_web": "No ejecutada: proxy HTTP devolvio 403 para ambos endpoints",
+  "motor_desktop": "No disponible; pendiente apertura y actualizacion en Windows",
+  "UnappliedChanges": "Comparadas todas las consultas con modelo aplicado: equivalentes al quitar espacios extremos. Eliminada copia pendiente para evitar restaurar conexiones antiguas.",
+  "bindings": "Retirados SecurityBindings obsoletos y Connections con IDs de publicacion del original; no se copian credenciales.",
+  "esquemas": {
+    "validados": 11,
+    "no_disponibles": 32,
+    "causa": "Esquema visualContainer/2.14.0 no disponible (404 repositorio / 403 endpoint oficial). Visuales preservados identicos."
+  }
+}

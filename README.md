@@ -1,5 +1,19 @@
 # Compras Ecuador — Power BI
 
+## Entrega final unificada
+
+Se conserva COMPRAS_TRABAJADO (cinco paginas, 33 visuales, 50 medidas y cuatro relaciones) y se incorporan las dos conexiones web CSV de COMPRAS_FINAL_CONEXIONES.
+
+- **[Descargar plantilla COMPRAS FINAL (.pbit)](https://github.com/brantos102/PBI/raw/refs/heads/main/entregables/final/COMPRAS_FINAL_UNIFICADO.pbit)**
+- [Paquete completo con proyecto PBIP y consultas](https://github.com/brantos102/PBI/raw/refs/heads/main/entregables/final/COMPRAS_FINAL_UNIFICADO_COMPLETO.zip)
+- [Instrucciones de apertura, conexiones y validacion](entregables/final/LEEME_FINAL.md)
+
+Abrir en Power BI Desktop actualizado, usar acceso web **Anonimo** para las URLs CSV publicadas cuando se solicite, actualizar y guardar como PBIX. Esta entrega usa directamente las conexiones web del archivo recibido; no usa Excel local, Snapshot ni los parametros pOrigen/pGoogleSheetsURL de versiones anteriores.
+
+Los archivos del informe se preservaron byte a byte y las consultas pasaron el analisis sintactico. Queda pendiente ejecutar la actualizacion y verificar la apertura/renderizado en Desktop: este entorno Linux no dispone del programa y el proxy bloquea los endpoints de Google. El detalle del alcance de validacion esta en la guia.
+
+## Versiones anteriores
+
 Informe de compras, servicios y ahorros basado en el Excel y la presentación compartidos.
 
 ## Revisión 3: importes de texto y celdas vacías de Google
